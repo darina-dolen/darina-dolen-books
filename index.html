@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дарина Долен | Писатель</title>
+    <style>
+        :root {
+            --card-bg: rgba(10, 15, 30, 0.6);
+            --text-main: #e0e0e0;
+            --text-muted: #999;
+            --gold-gradient: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* --- ВИДЕО ФОН --- */
+        .bg-video {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            object-fit: cover; z-index: -2;
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 50%, rgba(5, 11, 20, 0.6) 0%, rgba(0, 0, 0, 0.95) 100%);
+            z-index: -1;
+        }
+
+        /* --- НАВИГАЦИЯ --- */
+        .top-nav {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            z-index: 10;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-btn {
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 1rem;
+            border: 1px solid #d4af37;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-btn:hover {
+            color: #111;
+            background: var(--gold-gradient);
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Выделенная кнопка доната */
+        .donate-btn {
+            background: var(--gold-gradient);
+            color: #111;
+            border-color: transparent;
+        }
+        .donate-btn:hover {
+            box-shadow: 0 0 30px rgba(252, 246, 186, 0.6);
+        }
+
+        .gold-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shimmer 4s infinite linear;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        header { padding: 5rem 2rem 2rem; text-align: center; position: relative; }
+        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; letter-spacing: 2px; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: normal; }
+        
+        .subtitle { font-size: 1.2rem; color: rgba(255,255,255,0.7); letter-spacing: 4px; text-transform: uppercase; }
+
+        .hero { display: flex; flex-direction: column; align-items: center; padding: 2rem; text-align: center; max-width: 800px; margin: 0 auto; }
+        .author-photo {
+            width: 280px; height: 280px; border-radius: 50%; object-fit: cover;
+            background: var(--gold-gradient); padding: 4px; box-shadow: 0 0 30px rgba(191, 149, 63, 0.3);
+            margin-bottom: 2rem; transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .author-photo:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(252, 246, 186, 0.5); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
+        .quote { text-align: center; margin: 4rem auto; font-size: 1.4rem; font-style: italic; max-width: 800px; color: #d4af37; opacity: 0.9; border-left: 2px solid #d4af37; border-right: 2px solid #d4af37; padding: 0 2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; padding: 1rem; }
+
+        .book-link { text-decoration: none; color: inherit; display: block; }
+        .book-card {
+            position: relative; background: var(--card-bg); border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 15px; overflow: hidden; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); backdrop-filter: blur(15px); height: 100%;
+        }
+        .book-card::before {
+            content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); transition: all 0.7s ease; z-index: 2; pointer-events: none;
+        }
+        .book-card:hover { transform: translateY(-15px); border-color: rgba(212, 175, 55, 0.6); box-shadow: 0 20px 40px rgba(191, 149, 63, 0.4); background: rgba(10, 15, 30, 0.8); }
+        .book-card:hover::before { left: 200%; }
+
+        .book-cover-wrapper { overflow: hidden; position: relative; }
+        .book-cover { width: 100%; height: 420px; object-fit: cover; transition: transform 0.6s ease; display: block; }
+        .book-card:hover .book-cover { transform: scale(1.08); }
+
+        .book-info { padding: 1.8rem; position: relative; z-index: 3; background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(10,15,30,0.7) 100%); }
+        .book-info h3 { margin-top: 0; font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; }
+        .genre { font-size: 0.85rem; color: #d4af37; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- СЕКЦИИ МИРОВ --- */
+        .world-section {
+            padding: 4rem 0;
+            margin-top: 2rem;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(5,11,20,0.9), rgba(0,0,0,0));
+            position: relative;
+            z-index: 1;
+        }
+
+        .world-header { text-align: center; margin-bottom: 2rem; padding: 0 2rem; }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 1rem 0;
+            white-space: nowrap;
+        }
+
+        .carousel-track {
+            display: inline-flex;
+            gap: 2rem;
+            animation: scroll-carousel 40s linear infinite;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-carousel {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1rem)); }
+        }
+
+        .carousel-item {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .carousel-item:hover {
+            transform: scale(1.03);
+            border-color: #d4af37;
+            z-index: 10;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- ПОДВАЛ, ДОНАТЫ И ПЛАШКА --- */
+        footer { 
+            text-align: center; 
+            padding: 4rem 2rem 2rem; 
+            background: linear-gradient(to top, #000000, rgba(0,0,0,0.8), transparent); 
+            margin-top: 2rem; 
+            border-top: 1px solid rgba(212, 175, 55, 0.2); 
+            position: relative; 
+            z-index: 1; 
+        }
+
+        .donation-box {
+            background: rgba(10, 15, 30, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            max-width: 500px;
+            margin: 0 auto 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .donation-box p {
+            color: #ccc;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-number {
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-family: monospace;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+        }
+        
+        .social-links { margin-top: 2rem; margin-bottom: 3rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+        .social-links a { color: var(--text-main); text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease; border: 1px solid #d4af37; padding: 10px 25px; border-radius: 30px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
+        .social-links a:hover { color: #111; background: var(--gold-gradient); border-color: transparent; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); transform: translateY(-3px); }
+
+        .disclaimer {
+            max-width: 850px;
+            margin: 0 auto 2rem;
+            padding: 1.5rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <video class="bg-video" autoplay loop muted playsinline>
+        <source src="IMG_8595.MP4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <header>
+        <div class="top-nav">
+            <a href="#support" class="contact-btn donate-btn">Поддержать автора</a>
+            <a href="#contacts" class="contact-btn">Контакты</a>
+        </div>
+
+        <h1 class="gold-text">Дарина Долен</h1>
+        <div class="subtitle">Писатель &middot; Творец миров &middot; Исследователь душ</div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <img src="photo_2026-04-03_10-28-51.jpg" alt="Дарина Долен" class="author-photo">
+            <p style="font-size: 1.2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">От неоновых улиц Нового Петербурга до пыльных архивов с тайнами великих художников. Мои книги — это единая ткань повествования, где персонажи живут своей жизнью, иногда заглядывая в соседние истории.</p>
+        </section>
+
+        <div class="quote">
+            «Можем ли мы начинать жить снова? Подобны ли мы природе, что засыпает и возрождается? Все эти вопросы достойны ответов...»
+        </div>
+
+        <h2 class="gold-text">Библиография</h2>
+        
+        <div class="books-grid">
+            <a href="#world-last-touch" class="book-link">
+                <div class="book-card">
+                    <div class="book-cover-wrapper">
+                        <img src="121.jpg" alt="Последнее касание" class="book-cover">
+                    </div>
+                    <div class="book-info">
+                        <h3>Последнее касание</h3>
+                        <div class="genre">Киберпанк / Фантастика</div>
+                        <p>Новый Петербург, 2050 год. Доктор Левин, передовые технологии и странная находка в Индии.</p>
+                        <p style="color: #d4af37; font-size: 0.9rem; margin-top: 1rem; text-decoration: underline;">Визуальное отражение &darr;</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#world-lucy" class="book-link">
+                <div class="book-card">
+                    <div class="book-cover-wrapper">
+                        <img src="777.jpg" alt="Люси. Ее дневник" class="book-cover">
+                    </div>
+                    <div class="book-info">
+                        <h3>Люси. Ее дневник</h3>
+                        <div class="genre">Киберпанк / Психологическая драма</div>
+                        <p>Новый Петербург. Дневник Люси — птицы в золотой клетке, запертой на вершине башни. История о контроле и стертом прошлом.</p>
+                        <p style="color: #d4af37; font-size: 0.9rem; margin-top: 1rem; text-decoration: underline;">Визуальное отражение &darr;</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#world-eva" class="book-link">
+                <div class="book-card">
+                    <div class="book-cover-wrapper"><img src="444.jpg" alt="Я все узнаю!" class="book-cover"></div>
+                    <div class="book-info">
+                        <h3>Я все узнаю!</h3>
+                        <div class="genre">Ироничная проза</div>
+                        <p>Детский сад «Ромашка» и дачные участки скрывают больше секретов, чем кажется. История от лица пятилетней Евы.</p>
+                        <p style="color: #d4af37; font-size: 0.9rem; margin-top: 1rem; text-decoration: underline;">Визуальное отражение &darr;</p>
+                    </div>
+                </div>
+            </a>
+
+            <div class="book-card">
+                <div class="book-cover-wrapper"><img src="131.jpg" alt="Темная Сторона Искусства" class="book-cover"></div>
+                <div class="book-info">
+                    <h3>Темная Сторона Искусства</h3>
+                    <div class="genre">Арт-детектив / Триллер</div>
+                    <p>Тайны полотен Врубеля, допросы в «Крестах» и опасная игра, где искусство становится религией.</p>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover-wrapper"><img src="111.jpg" alt="Спасибо Роза" class="book-cover"></div>
+                <div class="book-info">
+                    <h3>Спасибо, Роза</h3>
+                    <div class="genre">Современная драма</div>
+                    <p>История об уязвимости, масках, которые мы носим в современном мире, и поиске истинной любви.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="world-last-touch" class="world-section">
+        <div class="world-header">
+            <h2 class="gold-text">Визуальное отражение «Последнего касания»</h2>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="01.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="02.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="03.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="04.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="05.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="06.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="07.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="08.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="09.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="010.jpg" alt="Визуальное отражение"></div>
+
+                <div class="carousel-item"><img src="01.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="02.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="03.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="04.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="05.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="06.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="07.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="08.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="09.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="010.jpg" alt="Визуальное отражение"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="world-lucy" class="world-section" style="padding-top: 0;">
+        <div class="world-header">
+            <h2 class="gold-text">Визуальное отражение «Люси. Ее дневник»</h2>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-track" style="animation-direction: reverse;">
+                <div class="carousel-item"><img src="331.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="332.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="333.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="334.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="335.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="336.jpg" alt="Визуальное отражение"></div>
+
+                <div class="carousel-item"><img src="331.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="332.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="333.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="334.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="335.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="336.jpg" alt="Визуальное отражение"></div>
+                
+                <div class="carousel-item"><img src="331.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="332.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="333.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="334.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="335.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="336.jpg" alt="Визуальное отражение"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="world-eva" class="world-section" style="padding-top: 0;">
+        <div class="world-header">
+            <h2 class="gold-text">Визуальное отражение «Я все узнаю!»</h2>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="701.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="702.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="703.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="704.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="705.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="706.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="707.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="708.jpg" alt="Визуальное отражение"></div>
+
+                <div class="carousel-item"><img src="701.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="702.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="703.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="704.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="705.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="706.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="707.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="708.jpg" alt="Визуальное отражение"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div id="support" class="donation-box">
+            <h3 class="gold-text" style="font-size: 1.8rem; margin-top: 0; margin-bottom: 0.5rem;">Поддержать автора</h3>
+            <p>Ваша поддержка помогает создавать новые миры и продолжать истории любимых героев.</p>
+            <div class="card-number">5536 9138 8050 1628</div>
+        </div>
+
+        <h2 id="contacts" class="gold-text" style="font-size: 2rem; margin-bottom: 1rem;">Связь с автором</h2>
+        <p>Следите за новыми мирами и общайтесь с Дариной:</p>
+        
+        <div class="social-links">
+            <a href="https://t.me/DarinaDolen" target="_blank">Telegram</a>
+            <a href="https://www.threads.com/@darina.dolen?igshid=NTc4MTIwNjQ2YQ==" target="_blank">Threads</a>
+            <a href="https://ridero.ru/author/dolen_darina_kcvp1/" target="_blank">Книги на Ridero</a>
+        </div>
+
+        <div class="disclaimer">
+            Все произведения носят исключительно художественный и развлекательный характер. Персонажи и события вымышлены, любые совпадения с реальными людьми случайны. 
+            <br><br>
+            <strong style="color: rgba(255, 255, 255, 0.6);">НЕЗАКОННОЕ ПОТРЕБЛЕНИЕ НАРКОТИЧЕСКИХ СРЕДСТВ, ПСИХОТРОПНЫХ ВЕЩЕСТВ, ИХ АНАЛОГОВ ПРИЧИНЯЕТ ВРЕД ЗДОРОВЬЮ, ИХ НЕЗАКОННЫЙ ОБОРОТ ЗАПРЕЩЕН И ВЛЕЧЕТ УСТАНОВЛЕННУЮ ЗАКОНОДАТЕЛЬСТВОМ ОТВЕТСТВЕННОСТЬ.</strong>
+        </div>
+
+        <p style="font-size: 0.9rem; color: #666;">&copy; 2026 Дарина Долен. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
