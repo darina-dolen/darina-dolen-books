@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дарина Долен | Писатель</title>
+    
+    <title>Дарина Долен | Писатель: киберпанк, фантастика, драма</title>
+    <meta name="description" content="Официальный сайт писателя Дарины Долен. Книги в жанрах киберпанк, фантастика и психологическая драма. Откройте миры Нового Петербурга: 'Последнее касание', 'Люси. Ее дневник' и другие истории.">
+    <meta name="keywords" content="Дарина Долен, писатель, книги, киберпанк, фантастика, психологическая драма, Новый Петербург, Последнее касание, Люси Ее дневник, Я все узнаю, Темная Сторона Искусства, Спасибо Роза">
+    <meta name="author" content="Дарина Долен">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Дарина Долен | Писатель и творец миров">
+    <meta property="og:description" content="Книги в жанрах киберпанк, фантастика и психологическая драма. Добро пожаловать в Новый Петербург.">
+    <meta property="og:url" content="https://darina-dolen.ru/">
+    <meta property="og:image" content="https://darina-dolen.ru/photo_2026-04-03_10-28-51.jpg">
+    <meta property="og:site_name" content="Дарина Долен">
+
     <style>
         :root {
             --card-bg: rgba(10, 15, 30, 0.6);
@@ -139,31 +152,16 @@
 
         /* --- СЕКЦИИ МИРОВ --- */
         .world-section {
-            padding: 4rem 0;
-            margin-top: 2rem;
+            padding: 4rem 0; margin-top: 2rem;
             background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(5,11,20,0.9), rgba(0,0,0,0));
-            position: relative;
-            z-index: 1;
+            position: relative; z-index: 1;
         }
 
         .world-header { text-align: center; margin-bottom: 2rem; padding: 0 2rem; }
 
-        .carousel-container {
-            width: 100%;
-            overflow: hidden;
-            padding: 1rem 0;
-            white-space: nowrap;
-        }
-
-        .carousel-track {
-            display: inline-flex;
-            gap: 2rem;
-            animation: scroll-carousel 40s linear infinite;
-        }
-
-        .carousel-track:hover {
-            animation-play-state: paused;
-        }
+        .carousel-container { width: 100%; overflow: hidden; padding: 1rem 0; white-space: nowrap; }
+        .carousel-track { display: inline-flex; gap: 2rem; animation: scroll-carousel 40s linear infinite; }
+        .carousel-track:hover { animation-play-state: paused; }
 
         @keyframes scroll-carousel {
             0% { transform: translateX(0); }
@@ -171,67 +169,34 @@
         }
 
         .carousel-item {
-            width: 300px;
-            height: 400px;
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            width: 300px; height: 400px; position: relative; border-radius: 15px; overflow: hidden;
+            flex-shrink: 0; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .carousel-item:hover {
-            transform: scale(1.03);
-            border-color: #d4af37;
-            z-index: 10;
-        }
+        .carousel-item:hover { transform: scale(1.03); border-color: #d4af37; z-index: 10; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* --- ПОДВАЛ, ДОНАТЫ И ПЛАШКА --- */
+        /* --- ПОДВАЛ --- */
         footer { 
-            text-align: center; 
-            padding: 4rem 2rem 2rem; 
+            text-align: center; padding: 4rem 2rem 2rem; 
             background: linear-gradient(to top, #000000, rgba(0,0,0,0.8), transparent); 
-            margin-top: 2rem; 
-            border-top: 1px solid rgba(212, 175, 55, 0.2); 
-            position: relative; 
-            z-index: 1; 
+            margin-top: 2rem; border-top: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative; z-index: 1; 
         }
 
         .donation-box {
-            background: rgba(10, 15, 30, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 15px;
-            padding: 2.5rem 2rem;
-            max-width: 500px;
-            margin: 0 auto 4rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 15, 30, 0.8); border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 15px; padding: 2.5rem 2rem; max-width: 500px; margin: 0 auto 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
         }
 
-        .donation-box p {
-            color: #ccc;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
+        .donation-box p { color: #ccc; font-size: 1rem; margin-bottom: 1.5rem; }
 
         .card-number {
-            font-size: 1.8rem;
-            letter-spacing: 3px;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 1rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            font-family: monospace;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+            font-size: 1.8rem; letter-spacing: 3px; color: #fff; background: rgba(0, 0, 0, 0.5);
+            padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
+            font-family: monospace; text-shadow: 0 2px 5px rgba(0,0,0,0.8);
         }
         
         .social-links { margin-top: 2rem; margin-bottom: 3rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
@@ -239,16 +204,9 @@
         .social-links a:hover { color: #111; background: var(--gold-gradient); border-color: transparent; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); transform: translateY(-3px); }
 
         .disclaimer {
-            max-width: 850px;
-            margin: 0 auto 2rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.4);
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
-            line-height: 1.6;
-            letter-spacing: 0.5px;
+            max-width: 850px; margin: 0 auto 2rem; padding: 1.5rem 2rem; border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px; background: rgba(0, 0, 0, 0.4); font-size: 0.85rem; color: rgba(255, 255, 255, 0.4);
+            line-height: 1.6; letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -271,7 +229,7 @@
 
     <div class="container">
         <section class="hero">
-            <img src="photo_2026-04-03_10-28-51.jpg" alt="Дарина Долен" class="author-photo">
+            <img src="photo_2026-04-03_10-28-51.jpg" alt="Дарина Долен - писатель" class="author-photo">
             <p style="font-size: 1.2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">От неоновых улиц Нового Петербурга до пыльных архивов с тайнами великих художников. Мои книги — это единая ткань повествования, где персонажи живут своей жизнью, иногда заглядывая в соседние истории.</p>
         </section>
 
@@ -285,7 +243,7 @@
             <a href="#world-last-touch" class="book-link">
                 <div class="book-card">
                     <div class="book-cover-wrapper">
-                        <img src="121.jpg" alt="Последнее касание" class="book-cover">
+                        <img src="121.jpg" alt="Книга Последнее касание" class="book-cover">
                     </div>
                     <div class="book-info">
                         <h3>Последнее касание</h3>
@@ -299,7 +257,7 @@
             <a href="#world-lucy" class="book-link">
                 <div class="book-card">
                     <div class="book-cover-wrapper">
-                        <img src="777.jpg" alt="Люси. Ее дневник" class="book-cover">
+                        <img src="777.jpg" alt="Книга Люси. Ее дневник" class="book-cover">
                     </div>
                     <div class="book-info">
                         <h3>Люси. Ее дневник</h3>
@@ -312,7 +270,7 @@
 
             <a href="#world-eva" class="book-link">
                 <div class="book-card">
-                    <div class="book-cover-wrapper"><img src="444.jpg" alt="Я все узнаю!" class="book-cover"></div>
+                    <div class="book-cover-wrapper"><img src="444.jpg" alt="Книга Я все узнаю!" class="book-cover"></div>
                     <div class="book-info">
                         <h3>Я все узнаю!</h3>
                         <div class="genre">Ироничная проза</div>
@@ -323,7 +281,7 @@
             </a>
 
             <div class="book-card">
-                <div class="book-cover-wrapper"><img src="131.jpg" alt="Темная Сторона Искусства" class="book-cover"></div>
+                <div class="book-cover-wrapper"><img src="131.jpg" alt="Книга Темная Сторона Искусства" class="book-cover"></div>
                 <div class="book-info">
                     <h3>Темная Сторона Искусства</h3>
                     <div class="genre">Арт-детектив / Триллер</div>
@@ -332,7 +290,7 @@
             </div>
 
             <div class="book-card">
-                <div class="book-cover-wrapper"><img src="111.jpg" alt="Спасибо Роза" class="book-cover"></div>
+                <div class="book-cover-wrapper"><img src="111.jpg" alt="Книга Спасибо Роза" class="book-cover"></div>
                 <div class="book-info">
                     <h3>Спасибо, Роза</h3>
                     <div class="genre">Современная драма</div>
@@ -348,27 +306,27 @@
         </div>
         <div class="carousel-container">
             <div class="carousel-track">
-                <div class="carousel-item"><img src="01.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="02.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="03.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="04.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="05.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="06.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="07.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="08.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="09.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="010.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="01.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="02.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="03.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="04.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="05.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="06.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="07.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="08.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="09.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="010.jpg" alt="Иллюстрация к Последнему касанию"></div>
 
-                <div class="carousel-item"><img src="01.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="02.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="03.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="04.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="05.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="06.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="07.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="08.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="09.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="010.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="01.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="02.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="03.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="04.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="05.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="06.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="07.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="08.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="09.jpg" alt="Иллюстрация к Последнему касанию"></div>
+                <div class="carousel-item"><img src="010.jpg" alt="Иллюстрация к Последнему касанию"></div>
             </div>
         </div>
     </section>
@@ -379,26 +337,26 @@
         </div>
         <div class="carousel-container">
             <div class="carousel-track" style="animation-direction: reverse;">
-                <div class="carousel-item"><img src="331.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="332.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="333.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="334.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="335.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="336.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="331.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="332.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="333.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="334.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="335.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="336.jpg" alt="Иллюстрация Люси"></div>
 
-                <div class="carousel-item"><img src="331.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="332.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="333.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="334.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="335.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="336.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="331.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="332.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="333.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="334.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="335.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="336.jpg" alt="Иллюстрация Люси"></div>
                 
-                <div class="carousel-item"><img src="331.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="332.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="333.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="334.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="335.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="336.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="331.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="332.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="333.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="334.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="335.jpg" alt="Иллюстрация Люси"></div>
+                <div class="carousel-item"><img src="336.jpg" alt="Иллюстрация Люси"></div>
             </div>
         </div>
     </section>
@@ -409,23 +367,23 @@
         </div>
         <div class="carousel-container">
             <div class="carousel-track">
-                <div class="carousel-item"><img src="701.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="702.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="703.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="704.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="705.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="706.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="707.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="708.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="701.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="702.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="703.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="704.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="705.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="706.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="707.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="708.jpg" alt="Иллюстрация Я все узнаю"></div>
 
-                <div class="carousel-item"><img src="701.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="702.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="703.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="704.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="705.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="706.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="707.jpg" alt="Визуальное отражение"></div>
-                <div class="carousel-item"><img src="708.jpg" alt="Визуальное отражение"></div>
+                <div class="carousel-item"><img src="701.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="702.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="703.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="704.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="705.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="706.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="707.jpg" alt="Иллюстрация Я все узнаю"></div>
+                <div class="carousel-item"><img src="708.jpg" alt="Иллюстрация Я все узнаю"></div>
             </div>
         </div>
     </section>
